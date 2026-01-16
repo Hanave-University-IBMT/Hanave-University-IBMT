@@ -3,34 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HANAVE IBMT | Online Academic Library</title>
+  <title>HANAVE University IBMT | Online Academic Library</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #f5f7fa; }
-    header { background: #0b3c5d; color: white; padding: 20px; }
-    nav a { color: white; margin-right: 15px; text-decoration: none; font-weight: bold; }
+    body { font-family: 'Arial', sans-serif; margin: 0; background: #f0f2f5; }
+    header { background: #0b3c5d; color: white; padding: 20px; display: flex; align-items: center; justify-content: space-between; }
+    header img { height: 60px; }
+    nav a { color: white; margin-left: 15px; text-decoration: none; font-weight: bold; }
     section { padding: 30px; }
     h2 { color: #0b3c5d; }
-    .card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
     footer { background: #0b3c5d; color: white; text-align: center; padding: 15px; }
     a.resource { display: block; margin: 8px 0; color: #1a73e8; }
+    .login-form { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+    .login-form input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; }
+    .login-form button { background: #0b3c5d; color: white; padding: 10px; width: 100%; border: none; border-radius: 5px; cursor: pointer; }
+    .admin-panel { max-width: 600px; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+    .admin-panel input, .admin-panel button { margin-top: 10px; padding: 10px; width: 100%; border-radius: 5px; border: 1px solid #ccc; }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>HANAVE University - Institute of Business, Management & Technology (HIBMT)</h1>
-  <p>Online Academic Library</p>
+  <div>
+    <img src="https://www.hanave.ac.ug/logo.png" alt="HANAVE IBMT Logo">
+  </div>
   <nav>
     <a href="#journals">Journals</a>
-    <a href="#books">E‑Books</a>
+    <a href="#books">E-Books</a>
     <a href="#research">Research</a>
-    <a href="#oer">Teaching Resources</a>
+    <a href="#oer">Teaching</a>
+    <a href="#login">Login</a>
   </nav>
 </header>
 
 <section id="journals">
   <div class="card">
-    <h2>Open‑Access Journals</h2>
+    <h2>Open-Access Journals</h2>
     <a class="resource" href="https://doaj.org" target="_blank">Directory of Open Access Journals (DOAJ)</a>
     <a class="resource" href="https://www.ncbi.nlm.nih.gov/pmc/" target="_blank">PubMed Central</a>
     <a class="resource" href="https://journals.plos.org" target="_blank">PLOS Journals</a>
@@ -39,7 +48,7 @@
 
 <section id="books">
   <div class="card">
-    <h2>Free Academic E‑Books</h2>
+    <h2>Academic E-Books</h2>
     <a class="resource" href="https://www.doabooks.org" target="_blank">Directory of Open Access Books (DOAB)</a>
     <a class="resource" href="https://www.gutenberg.org" target="_blank">Project Gutenberg</a>
     <a class="resource" href="https://archive.org" target="_blank">Internet Archive</a>
@@ -63,10 +72,49 @@
   </div>
 </section>
 
+<section id="login">
+  <div class="login-form">
+    <h2>Student / Staff Login</h2>
+    <input type="text" placeholder="Username" id="username">
+    <input type="password" placeholder="Password" id="password">
+    <button onclick="loginUser()">Login</button>
+  </div>
+</section>
+
+<section id="admin">
+  <div class="admin-panel">
+    <h2>Admin PDF Upload</h2>
+    <input type="file" id="pdfUpload">
+    <button onclick="uploadPDF()">Upload PDF</button>
+  </div>
+</section>
+
 <footer>
   <p>© 2026 HANAVE IBMT University | Free Academic Resources</p>
 </footer>
 
+<script>
+function loginUser() {
+  const user = document.getElementById('username').value;
+  const pass = document.getElementById('password').value;
+  if(user === 'admin' && pass === 'admin123'){
+    alert('Admin login successful');
+    window.location.href = '#admin';
+  } else {
+    alert('Login successful for student: ' + user);
+  }
+}
+
+function uploadPDF() {
+  const file = document.getElementById('pdfUpload').files[0];
+  if(file){
+    alert(file.name + ' uploaded successfully (simulated)');
+    // In real system, integrate with server-side upload
+  } else {
+    alert('Please select a PDF to upload');
+  }
+}
+</script>
+
 </body>
 </html>
-
